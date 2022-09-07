@@ -4,7 +4,9 @@ var submitButton = document.getElementById("submit");
 var cat;
 var selRandom = [];
 var ids = [];
-const cards = document.getElementById("cards");
+var cardArea = document.getElementById("card-Area");
+// const cards = document.getElementById("cards");
+// const cardsBody = document.getElementById("card-body");
 
 //? Fetching multiple images from API
 async function fCatImages(numberofImages) {
@@ -43,20 +45,34 @@ function displayImages(selRandom, data) {
 		console.log(data[selRandom[i]].id);
 
 		// * Creating Elements
+		//! Creating DIV - CardElement
+		var cards = document.createElement("div");
+		cards.className = "cards";
+		cards.style = "width: 18rem";
+		cardArea.appendChild(cards);
+
 		//! Image elements
 		var newImg = document.createElement("img");
 		newImg.id = data[selRandom[i]].id;
 		newImg.setAttribute("src", "https://cataas.com/cat?" + data[selRandom[i]].id);
 		newImg.setAttribute("alt", data[selRandom[i]].tags);
+		newImg.className = "card-img-top";
 		cards.appendChild(newImg);
+		//! Creating DIV - CardBody
+		var newDiv = document.createElement("div");
+		newDiv.id = "card-body";
+		newDiv.className = "card-body";
+		cards.appendChild(newDiv);
 
 		//! To shorten the code
 		var tags = data[selRandom[i]].tags;
 
 		// //! Paragraph element
 		var newTags = document.createElement("p");
-		var newPText = document.createTextNode(tags.join(" "));
-		cards.appendChild(newPText);
+		var newPText = document.createTextNode(`<b>Tags:</b> <b>hi</b> ${tags.join(", ")}`);
+		newTags.className = "card-text";
+		newDiv.appendChild(newTags);
+		newTags.appendChild(newPText);
 	}
 }
 
