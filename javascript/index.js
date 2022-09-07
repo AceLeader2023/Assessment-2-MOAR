@@ -1,7 +1,7 @@
 const catImg = document.getElementById("CAT1");
 
 //* function to fetch data from API
-async function getCatImages() {
+async function getCatImage() {
 	let catImages = await fetch("https://cataas.com/cat");
 
 	// console.log(catImages);
@@ -18,4 +18,4 @@ function insertCatImg(catImages) {
 	console.log(catImg);
 }
 
-getCatImages();
+getCatImage();
