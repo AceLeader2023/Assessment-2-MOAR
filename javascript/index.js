@@ -4,7 +4,7 @@ var submitButton = document.getElementById("submit");
 var cat;
 var selRandom = [];
 var ids = [];
-var cardArea = document.getElementById("card-Area");
+var cardArea = document.getElementById("row");
 // const cards = document.getElementById("cards");
 // const cardsBody = document.getElementById("card-body");
 
@@ -32,24 +32,29 @@ function randomImages(data) {
 		selRandom.push(unselRandom);
 	}
 	displayImages(selRandom, data);
-	console.log(data);
+	// console.log(data);
 }
 
 //! Displaying a grid
 function displayImages(selRandom, data) {
-	console.log(data);
-	console.log(selRandom);
+	// console.log(data);
+	// console.log(selRandom);
 
 	for (let i = 0; i < selRandom.length; i++) {
-		console.log(data[selRandom[i]]);
-		console.log(data[selRandom[i]].id);
+		// console.log(data[selRandom[i]]);
+		// console.log(data[selRandom[i]].id);
 
 		// * Creating Elements
+		//! COL Div
+		var divCol = document.createElement("div");
+		divCol.className = "col";
+		cardArea.appendChild(divCol);
+
 		//! Creating DIV - CardElement
 		var cards = document.createElement("div");
-		cards.className = "cards";
+		cards.className = "card h-100";
 		cards.style = "width: 18rem";
-		cardArea.appendChild(cards);
+		divCol.appendChild(cards);
 
 		//! Image elements
 		var newImg = document.createElement("img");
@@ -57,6 +62,7 @@ function displayImages(selRandom, data) {
 		newImg.setAttribute("src", "https://cataas.com/cat?" + data[selRandom[i]].id);
 		newImg.setAttribute("alt", data[selRandom[i]].tags);
 		newImg.className = "card-img-top";
+		// newImg.style = "padding: 500px";
 		cards.appendChild(newImg);
 		//! Creating DIV - CardBody
 		var newDiv = document.createElement("div");
@@ -67,12 +73,20 @@ function displayImages(selRandom, data) {
 		//! To shorten the code
 		var tags = data[selRandom[i]].tags;
 
-		// //! Paragraph element
-		var newTags = document.createElement("p");
-		var newPText = document.createTextNode(`<b>Tags:</b> <b>hi</b> ${tags.join(", ")}`);
-		newTags.className = "card-text";
-		newDiv.appendChild(newTags);
-		newTags.appendChild(newPText);
+		// ! Paragraph element
+		if (tags.length > 0) {
+			var newTags = document.createElement("p");
+			var newPText = document.createTextNode(`Tags: ${tags.join(", ")}`);
+			newTags.className = "card-text";
+			newDiv.appendChild(newTags);
+			newTags.appendChild(newPText);
+		} else {
+			var newTags = document.createElement("p");
+			var newPText = document.createTextNode("No Tags");
+			newTags.className = "card-text";
+			newDiv.appendChild(newTags);
+			newTags.appendChild(newPText);
+		}
 	}
 }
 
