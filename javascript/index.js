@@ -1,5 +1,5 @@
 const catImg = document.getElementById("CAT1");
-var numberofImages = document.getElementById("numberOfImages").value;
+
 var submitButton = document.getElementById("submit");
 var cat;
 var selRandom = [];
@@ -17,7 +17,7 @@ async function fCatImages(numberofImages) {
 	data = await catImage.json();
 	// console.log(data);
 	// console.log(data.length);
-	randomImages(data);
+	randomImages(data, numberofImages);
 
 	//! id for image of random cat TESTING
 	// console.log(catImage[8].id);
@@ -25,13 +25,14 @@ async function fCatImages(numberofImages) {
 }
 
 //! Creating a list of random images
-function randomImages(data) {
+function randomImages(data, numberofImages) {
 	//? Picks random number within the range of the catImage.length / pushes them to selRandom
 	for (let i = 0; i < numberofImages; i++) {
 		var unselRandom = Math.floor(Math.random() * data.length);
 		selRandom.push(unselRandom);
 	}
 	displayImages(selRandom, data);
+	numberofImages = 0;
 	// console.log(data);
 }
 
@@ -52,7 +53,7 @@ function displayImages(selRandom, data) {
 
 		//! Creating DIV - CardElement
 		var cards = document.createElement("div");
-		cards.className = "card h-100";
+		cards.className = "card h-100 shadow-sm";
 		cards.style = "width: 18rem";
 		divCol.appendChild(cards);
 
@@ -88,6 +89,8 @@ function displayImages(selRandom, data) {
 			newTags.appendChild(newPText);
 		}
 	}
+	selRandom.length = 0;
+	console.log(selRandom);
 }
 
 //* function to fetch 1 image from API
@@ -114,5 +117,7 @@ function insertCatImg(catImage) {
 submitButton.addEventListener("click", getValue);
 
 function getValue() {
+	var numberofImages = document.getElementById("numberOfImages").value;
+	console.log(numberofImages);
 	fCatImages(numberofImages);
 }
