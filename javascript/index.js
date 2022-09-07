@@ -50,12 +50,13 @@ function displayImages(selRandom, data) {
 		newImg.setAttribute("alt", data[selRandom[i]].tags);
 		cards.appendChild(newImg);
 
-		console.log(data[selRandom[i].tags]);
+		//! To shorten the code
+		var tags = data[selRandom[i]].tags;
 
 		// //! Paragraph element
-		// var newTags = document.createElement("p");
-		// var newPText = document.createTextNode(data[selRandom[i].tags.length]);
-		// cards.appendChild(newPText);
+		var newTags = document.createElement("p");
+		var newPText = document.createTextNode(tags.join(" "));
+		cards.appendChild(newPText);
 	}
 }
 
