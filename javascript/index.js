@@ -1,9 +1,10 @@
 const catImg = document.getElementById("CAT1");
-var numberOfImages = document.getElementById("numberOfImages").value;
+var numberofImages = document.getElementById("numberOfImages").value;
 var submitButton = document.getElementById("submit");
 var cat;
 var selRandom = [];
 var ids = [];
+const cards = document.getElementById("cards");
 
 //? Fetching multiple images from API
 async function fCatImages(numberofImages) {
@@ -11,28 +12,51 @@ async function fCatImages(numberofImages) {
 	var catImage = await fetch("https://cataas.com/api/cats");
 
 	//* converting to json format
-	catImage = await catImage.json();
-	console.log(catImage);
-	console.log(catImage.length);
-
-	//? Picks random number within the range of the catImage.length / pushes them to selRandom
-	for (let i = 0; i < numberOfImages; i++) {
-		var unselRandom = Math.floor(Math.random() * catImage.length);
-		selRandom.push(unselRandom);
-	}
-
-	//? for loop to replace ids with urls
-	for (let i = 0; i < selRandom.length; i++) {
-		console.log(selRandom[i]);
-		selRandom[i] = "https://cataas.com/cat?" + catImage[i].id;
-		console.log(selRandom);
-
-		// imageDisplay(selRandom);
-	}
+	data = await catImage.json();
+	// console.log(data);
+	// console.log(data.length);
+	randomImages(data);
 
 	//! id for image of random cat TESTING
 	// console.log(catImage[8].id);
 	// console.log(selRandom);
+}
+
+//! Creating a list of random images
+function randomImages(data) {
+	//? Picks random number within the range of the catImage.length / pushes them to selRandom
+	for (let i = 0; i < numberofImages; i++) {
+		var unselRandom = Math.floor(Math.random() * data.length);
+		selRandom.push(unselRandom);
+	}
+	displayImages(selRandom, data);
+	console.log(data);
+}
+
+//! Displaying a grid
+function displayImages(selRandom, data) {
+	console.log(data);
+	console.log(selRandom);
+
+	for (let i = 0; i < selRandom.length; i++) {
+		console.log(data[selRandom[i]]);
+		console.log(data[selRandom[i]].id);
+
+		// * Creating Elements
+		//! Image elements
+		var newImg = document.createElement("img");
+		newImg.id = data[selRandom[i]].id;
+		newImg.setAttribute("src", "https://cataas.com/cat?" + data[selRandom[i]].id);
+		newImg.setAttribute("alt", data[selRandom[i]].tags);
+		cards.appendChild(newImg);
+
+		console.log(data[selRandom[i].tags]);
+
+		// //! Paragraph element
+		// var newTags = document.createElement("p");
+		// var newPText = document.createTextNode(data[selRandom[i].tags.length]);
+		// cards.appendChild(newPText);
+	}
 }
 
 //* function to fetch 1 image from API
@@ -59,5 +83,5 @@ function insertCatImg(catImage) {
 submitButton.addEventListener("click", getValue);
 
 function getValue() {
-	fCatImages(numberOfImages);
+	fCatImages(numberofImages);
 }
