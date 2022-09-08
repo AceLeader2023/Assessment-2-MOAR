@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<link rel="stylesheet" href="/css/main.css" />
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,16 +13,25 @@
 			crossorigin="anonymous"
 		/>
 	</head>
-	<body>
+	<body onload="fetchingData()">
 		<!--s FORM CONTAINER -->
 		<form class="row g-2 m-2">
 			<!-- ? Number of Images wanted -->
 			<div class="col-md-6">
+				<div id="notification"></div>
 				<label for="Nimages">How many Images:</label>
-				<input type="text" id="numberOfImages" name="Nimages" />
+				<input
+					type="text"
+					id="numberofImages"
+					name="Nimages"
+					placeholder="0-500"
+					required
+					min="0"
+				/>
 			</div>
-			<div class="col-12">
-				<button class="btn btn-primary" type="button" id="submit">submit</button>
+			<div class="col-12" id="messageArea">
+				<p id="quick-message">Loading Data</p>
+				<!-- <button class="btn btn-primary" type="button" id="submit">submit</button> -->
 			</div>
 		</form>
 		<!--f FORM CONTAINER  -->
@@ -45,7 +55,8 @@
 			integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
 			crossorigin="anonymous"
 		></script>
-		<script src="/javascript/imageGallery.js"></script>
+		<!-- <script src="/javascript/imageGallery.js"></script> -->
+		<script src="/javascript/newImageGallery.js"></script>
 		<!--f SCRIPT  -->
 	</body>
 

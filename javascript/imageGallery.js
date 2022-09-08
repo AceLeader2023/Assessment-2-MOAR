@@ -1,6 +1,7 @@
 const catImg = document.getElementById("CAT1");
 var clearBTN = document.getElementById("clearBTN");
 const submitButton = document.getElementById("submit");
+var body = document.getElementsByTagName("body");
 
 var cat;
 var selRandom = [];
@@ -10,6 +11,8 @@ var cardArea = document.getElementById("row");
 
 //? Event Listeners
 submitButton.addEventListener("click", getValue);
+console.log(body);
+
 // clearBTN.addEventListener("click", clearImagesBTN);
 
 function getValue() {
@@ -19,13 +22,14 @@ function getValue() {
 }
 
 //? Fetching multiple images from API
-async function fetchImages(numberofImages) {
+async function fetchImages(numberofImages, data) {
 	// * fetching the api
 	var catImage = await fetch("https://cataas.com/api/cats");
 
 	//* converting to json format
 	data = await catImage.json();
 	randomImages(data, numberofImages);
+	// searchTags(data);
 }
 
 //! Creating a list of random images
@@ -118,4 +122,9 @@ function clearAllImagesBTN() {
 
 function deleteImages() {
 	location.reload();
+}
+
+//s tag selection
+function searchTags(data) {
+	console.log(data);
 }
