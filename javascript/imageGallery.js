@@ -1,12 +1,22 @@
 const catImg = document.getElementById("CAT1");
+var clearBTN = document.getElementById("clearBTN");
+const submitButton = document.getElementById("submit");
 
-var submitButton = document.getElementById("submit");
 var cat;
 var selRandom = [];
 var ids = [];
+var submited = false;
 var cardArea = document.getElementById("row");
-// const cards = document.getElementById("cards");
-// const cardsBody = document.getElementById("card-body");
+
+//? Event Listeners
+submitButton.addEventListener("click", getValue);
+// clearBTN.addEventListener("click", clearImagesBTN);
+
+function getValue() {
+	var numberofImages = document.getElementById("numberOfImages").value;
+	// console.log(numberofImages);
+	fetchImages(numberofImages);
+}
 
 //? Fetching multiple images from API
 async function fetchImages(numberofImages) {
@@ -15,13 +25,7 @@ async function fetchImages(numberofImages) {
 
 	//* converting to json format
 	data = await catImage.json();
-	// console.log(data);
-	// console.log(data.length);
 	randomImages(data, numberofImages);
-
-	//! id for image of random cat TESTING
-	// console.log(catImage[8].id);
-	// console.log(selRandom);
 }
 
 //! Creating a list of random images
@@ -38,9 +42,6 @@ function randomImages(data, numberofImages) {
 
 //! Displaying a grid
 function displayRandomImages(selRandom, data) {
-	// console.log(data);
-	// console.log(selRandom);
-
 	for (let i = 0; i < selRandom.length; i++) {
 		// console.log(data[selRandom[i]]);
 		// console.log(data[selRandom[i]].id);
@@ -49,12 +50,14 @@ function displayRandomImages(selRandom, data) {
 		//! COL Div
 		var divCol = document.createElement("div");
 		divCol.className = "col";
+
 		cardArea.appendChild(divCol);
 
 		//! Creating DIV - CardElement
 		var cards = document.createElement("div");
 		cards.className = "card h-100 shadow-sm";
 		cards.style = "width: 18rem";
+		divCol.id = "cols";
 		divCol.appendChild(cards);
 
 		//! Image elements
@@ -91,34 +94,28 @@ function displayRandomImages(selRandom, data) {
 		}
 	}
 	selRandom.length = 0;
+	clearImagesBTN();
+
 	// console.log(selRandom);
 }
 
-//* function to fetch 1 image from API
-async function getCatImage() {
-	let catImage = await fetch("https://cataas.com/cat");
-
-	// console.log(catImages);
-	insertCatImg(catImage);
+//s Clearing Images
+function clearImagesBTN() {
+	if (submited == false) {
+		submited = true;
+		clearAllImagesBTN();
+	}
 }
 
-//* function to insert image into document
-function insertCatImg(catImage) {
-	console.log(catImg);
-	console.log(catImage);
-
-	// * * Pulling out the url out of the JSON formatted response from API and displaying it
-	catImg.src = catImage.url;
-	console.log(catImg);
+function clearAllImagesBTN() {
+	var newBTNClear = document.createElement("button");
+	newBTNClear.className = "btn btn-warning";
+	var newBTNText = document.createTextNode("CLEAR");
+	clearBTN.appendChild(newBTNClear);
+	newBTNClear.appendChild(newBTNText);
+	newBTNClear.addEventListener("click", deleteImages);
 }
 
-// getCatImage();
-
-//? Testing input and submit button
-submitButton.addEventListener("click", getValue);
-
-function getValue() {
-	var numberofImages = document.getElementById("numberOfImages").value;
-	console.log(numberofImages);
-	fetchImages(numberofImages);
+function deleteImages() {
+	location.reload();
 }
