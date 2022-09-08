@@ -9,7 +9,7 @@ var cardArea = document.getElementById("row");
 // const cardsBody = document.getElementById("card-body");
 
 //? Fetching multiple images from API
-async function fCatImages(numberofImages) {
+async function fetchImages(numberofImages) {
 	// * fetching the api
 	var catImage = await fetch("https://cataas.com/api/cats");
 
@@ -31,13 +31,13 @@ function randomImages(data, numberofImages) {
 		var unselRandom = Math.floor(Math.random() * data.length);
 		selRandom.push(unselRandom);
 	}
-	displayImages(selRandom, data);
+	displayRandomImages(selRandom, data);
 	numberofImages = 0;
 	// console.log(data);
 }
 
 //! Displaying a grid
-function displayImages(selRandom, data) {
+function displayRandomImages(selRandom, data) {
 	// console.log(data);
 	// console.log(selRandom);
 
@@ -65,6 +65,7 @@ function displayImages(selRandom, data) {
 		newImg.className = "card-img-top";
 		// newImg.style = "padding: 500px";
 		cards.appendChild(newImg);
+
 		//! Creating DIV - CardBody
 		var newDiv = document.createElement("div");
 		newDiv.id = "card-body";
@@ -90,7 +91,7 @@ function displayImages(selRandom, data) {
 		}
 	}
 	selRandom.length = 0;
-	console.log(selRandom);
+	// console.log(selRandom);
 }
 
 //* function to fetch 1 image from API
@@ -119,5 +120,5 @@ submitButton.addEventListener("click", getValue);
 function getValue() {
 	var numberofImages = document.getElementById("numberOfImages").value;
 	console.log(numberofImages);
-	fCatImages(numberofImages);
+	fetchImages(numberofImages);
 }

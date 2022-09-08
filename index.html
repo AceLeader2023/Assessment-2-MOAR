@@ -14,14 +14,23 @@
 	</head>
 	<body>
 		<!--s FORM CONTAINER -->
-		<form>
-			<input type="text" id="numberOfImages" />
-			<button type="button" id="submit">submit</button>
+		<form class="row g-2 m-2">
+			<!-- ? Number of Images wanted -->
+			<div class="col-md-6">
+				<label for="Nimages">How many Images:</label>
+				<input type="text" id="numberOfImages" name="Nimages" />
+			</div>
+			<div class="col-12">
+				<button class="btn btn-primary" type="button" id="submit">submit</button>
+			</div>
 		</form>
 		<!--f FORM CONTAINER  -->
+
+		<!--s IMAGES  -->
 		<div class="container">
-			<div id="row" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3"></div>
+			<div id="row" class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-4 g-3"></div>
 		</div>
+		<!--f IMAGES -->
 
 		<!-- <div id="card-Area"></div> -->
 		<!-- <div id="cards"></div> -->
