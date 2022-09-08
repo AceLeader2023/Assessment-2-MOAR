@@ -1,8 +1,15 @@
 #numberofImages {
-	/* border-radius: 30px; */
+	border: none;
+	border-bottom: solid 3px #333;
+	-webkit-transition: 0.5s;
+	transition: 0.5s;
+	outline: none;
 }
 
-input[type="text"] {
-	border: none;
-	border-bottom: 2px solid black;
+#numberofImages:focus {
+	border-bottom: solid 3px #ccc;
+}
+
+#tag-input {
+	visibility: hidden;
 }

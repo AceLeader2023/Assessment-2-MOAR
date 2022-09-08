@@ -17,7 +17,8 @@
 		<!--s FORM CONTAINER -->
 		<form class="row g-2 m-2">
 			<!-- ? Number of Images wanted -->
-			<div class="col-md-4">
+			<div class="col-md-6">
+				<div id="notification"></div>
 				<label for="Nimages">How many Images:</label>
 				<input
 					type="text"
@@ -27,19 +28,6 @@
 					required
 					min="0"
 				/>
-				<div id="notification"></div>
-			</div>
-			<div class="col-md-2" id="tag-check">
-				<label for="cat-tags">Any Tags?</label>
-				<input type="radio" id="yes" name="check-tag" value="yes" />
-				<label for="yes">Yes</label>
-				<input type="radio" id="no" name="check-tag" value="no" checked />
-				<label for="no">No</label>
-			</div>
-			<div class="col-md-5" id="tag-input">
-				<label for="tag-cats">What Tag?</label>
-				<input list="tags" />
-				<datalist id="tags"></datalist>
 			</div>
 			<div class="col-12" id="messageArea">
 				<p id="quick-message">Loading Data</p>
