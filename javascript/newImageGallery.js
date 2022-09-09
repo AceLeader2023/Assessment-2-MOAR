@@ -50,7 +50,7 @@ function createSubmitButton() {
 	submitButton.addEventListener("click", selectingNumbers); //$ Adding an event
 }
 
-//! User INPUT how many images and random
+//! User INPUT how many images then random
 function selectingNumbers() {
 	var userNumberImages = document.getElementById("numberofImages").value; //$ Get Value
 	console.log(maxNumber.min);
@@ -61,7 +61,11 @@ function selectingNumbers() {
 		maxNumber.style.width = "208.667";
 		maxNumber.style.borderBottom = "red solid 2px";
 		// console.log(submitAlert);
+	} else {
+		maxNumber.style.borderBottom = "solid 3px #333";
 	}
+
+	processImages();
 }
 
 //!TAGS
@@ -97,16 +101,12 @@ function tagAdd() {
 }
 
 function searchTags() {
-	// console.log("search");
-	// console.log(tagAdds.value);
-	// console.log(data[3].tags);
-
 	//$ To reset tagSelected Array
 	for (let a = 0; a < tagSelected.length; a++) {
 		tagSelected.pop();
 	}
 
-	//$ Storing data values into an array
+	//$ Storing data values into an array for the said tag
 	for (let i = 0; i < data.length; i++) {
 		if (data[i].tags.indexOf(tagAdds.value) > -1) {
 			tagSelected.push(data[i]);
@@ -116,6 +116,7 @@ function searchTags() {
 	//$Displaying result number to user
 	var submitdisabled = document.getElementById("submit");
 	tagResult.innerHTML = "You have " + tagSelected.length + " result available to you";
+	maxNumber.value = tagSelected.length;
 
 	if (tagSelected.length == 0) {
 		submitdisabled.disabled = true;
@@ -123,3 +124,66 @@ function searchTags() {
 		submitdisabled.disabled = false;
 	}
 }
+
+function tagImageCreate() {
+	for (let i = 0; i < tagSelected.length; i++) {
+		console.log(tagSelected[i].id);
+		var divCol = document.createElement("div");
+		divCol.className = "col";
+
+		cardArea.appendChild(divCol);
+
+		//! Creating DIV - CardElement
+		var cards = document.createElement("div");
+		cards.className = "card h-100 shadow-sm";
+		cards.style = "width: 18rem";
+		divCol.id = "cols";
+		divCol.appendChild(cards);
+
+		//! Image elements
+		var newImg = document.createElement("img");
+		newImg.id = tagSelected.id;
+		newImg.setAttribute("src", "https://cataas.com/cat?" + tagSelected[i].id);
+		newImg.setAttribute("alt", tagSelected[i].tags);
+		newImg.className = "card-img-top";
+		// newImg.style = "padding: 500px";
+		cards.appendChild(newImg);
+
+		//! Creating DIV - CardBody
+		var newDiv = document.createElement("div");
+		newDiv.id = "card-body";
+		newDiv.className = "card-body";
+		cards.appendChild(newDiv);
+
+		//! To shorten the code
+		var tags = tagSelected[i].tags;
+
+		// ! Paragraph element
+		if (tags.length > 0) {
+			var newTags = document.createElement("p");
+			var newPText = document.createTextNode(`Tags: ${tags.join(", ")}`);
+			newTags.className = "card-text";
+			newDiv.appendChild(newTags);
+			newTags.appendChild(newPText);
+		} else {
+			var newTags = document.createElement("p");
+			var newPText = document.createTextNode("No Tags");
+			newTags.className = "card-text";
+			newDiv.appendChild(newTags);
+			newTags.appendChild(newPText);
+		}
+	}
+	selectedTag.length = 0;
+}
+
+//! Process Images
+function processImages() {
+	// console.log(tagYes);
+	//! Create images for tag selected
+	if (tagYes.checked == true) {
+		tagImageCreate();
+	} else {
+	}
+}
+
+function createRandomImage() {}
