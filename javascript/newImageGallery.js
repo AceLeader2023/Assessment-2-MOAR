@@ -3,7 +3,7 @@
 //? VARs
 var cat;
 var ids = [];
-var selRandom = [];
+var ranIamges = [];
 var tagSelected = []; //$ For storing when use tag search feature
 var submited = false;
 
@@ -20,6 +20,7 @@ var tagNo = document.getElementById("no"); //? No Radio Button
 var tagInput = document.getElementById("tag-input");
 var tagAdds = document.getElementById("tags");
 var tagResult = document.getElementById("tag-result");
+var hide = document.getElementById("hide");
 // var userInputTag = document.getElementById("user-tag");
 
 //!Event Listeners
@@ -28,8 +29,11 @@ tagNo.addEventListener("click", tagGet);
 
 //! Called once body has loaded
 async function fetchingData() {
+	tagYes.checked = false;
+	tagNo.checked = true;
 	var fetchedData = await fetch("https://cataas.com/api/cats"); //$ fetching data
 	data = await fetchedData.json();
+
 	createSubmitButton();
 }
 
@@ -74,10 +78,12 @@ async function tagGet() {
 	if (tagYes.checked == true && tagNo.checked == false) {
 		var fetchTags = await fetch("https://cataas.com/api/tags"); //$ fetching all tags
 		dataTags = await fetchTags.json(); //$ converting to json
+		hide.style.visibility = "visible";
 		// console.log(dataTags);
 		tagAdd(); //? running to add all tags to input field
 	} else {
 		tagInput.style.visibility = "hidden";
+		hide.style.visibility = "hidden";
 		while (tagAdds.hasChildNodes()) {
 			tagAdds.removeChild(tagAdds.firstChild);
 			// console.log(tagAdds);
@@ -173,7 +179,8 @@ function tagImageCreate() {
 			newTags.appendChild(newPText);
 		}
 	}
-	selectedTag.length = 0;
+	tagSelected.length = 0;
+	clearImagesBTN();
 }
 
 //! Process Images
@@ -183,7 +190,88 @@ function processImages() {
 	if (tagYes.checked == true) {
 		tagImageCreate();
 	} else {
+		for (let i = 0; i < maxNumber.value; i++) {
+			var ranUnImages = Math.floor(Math.random() * data.length);
+			ranIamges.push(ranUnImages);
+			console.log(ranIamges);
+		}
+		createRandomImage(ranIamges);
 	}
 }
 
-function createRandomImage() {}
+function createRandomImage(ranIamges) {
+	for (let i = 0; i < ranIamges.length; i++) {
+		// console.log(data[selRandom[i]]);
+		// console.log(data[selRandom[i]].id);
+
+		// * Creating Elements
+		//! COL Div
+		var divCol = document.createElement("div");
+		divCol.className = "col";
+
+		cardArea.appendChild(divCol);
+
+		//! Creating DIV - CardElement
+		var cards = document.createElement("div");
+		cards.className = "card h-100 shadow-sm";
+		cards.style = "width: 18rem";
+		divCol.id = "cols";
+		divCol.appendChild(cards);
+
+		//! Image elements
+		var newImg = document.createElement("img");
+		newImg.id = data[ranIamges[i]].id;
+		newImg.setAttribute("src", "https://cataas.com/cat?" + data[ranIamges[i]].id);
+		newImg.setAttribute("alt", data[ranIamges[i]].tags);
+		newImg.className = "card-img-top";
+		// newImg.style = "padding: 500px";
+		cards.appendChild(newImg);
+
+		//! Creating DIV - CardBody
+		var newDiv = document.createElement("div");
+		newDiv.id = "card-body";
+		newDiv.className = "card-body";
+		cards.appendChild(newDiv);
+
+		//! To shorten the code
+		var tags = data[ranIamges[i]].tags;
+
+		// ! Paragraph element
+		if (tags.length > 0) {
+			var newTags = document.createElement("p");
+			var newPText = document.createTextNode(`Tags: ${tags.join(", ")}`);
+			newTags.className = "card-text";
+			newDiv.appendChild(newTags);
+			newTags.appendChild(newPText);
+		} else {
+			var newTags = document.createElement("p");
+			var newPText = document.createTextNode("No Tags");
+			newTags.className = "card-text";
+			newDiv.appendChild(newTags);
+			newTags.appendChild(newPText);
+		}
+	}
+	ranIamges.length = 0;
+
+	clearImagesBTN();
+}
+
+function clearImagesBTN() {
+	if (submited == false) {
+		submited = true;
+		clearAllImagesBTN();
+	}
+}
+
+function clearAllImagesBTN() {
+	var newBTNClear = document.createElement("button");
+	newBTNClear.className = "btn btn-warning";
+	var newBTNText = document.createTextNode("CLEAR");
+	clearBTN.appendChild(newBTNClear);
+	newBTNClear.appendChild(newBTNText);
+	newBTNClear.addEventListener("click", deleteImages);
+}
+
+function deleteImages() {
+	location.reload();
+}
