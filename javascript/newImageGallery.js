@@ -57,8 +57,8 @@ function createSubmitButton() {
 //! User INPUT how many images then random
 function selectingNumbers() {
 	var userNumberImages = document.getElementById("numberofImages").value; //$ Get Value
-	console.log(maxNumber.min);
-	console.log(maxNumber.max);
+	// console.log(maxNumber.min);
+	// console.log(maxNumber.max);
 
 	if (userNumberImages < maxNumber.min || userNumberImages > maxNumber.max) {
 		maxNumber.style.height = "30px";
@@ -106,6 +106,7 @@ function tagAdd() {
 	tagAdds.addEventListener("change", searchTags);
 }
 
+//! insert all data that have the selected tag
 function searchTags() {
 	//$ To reset tagSelected Array
 	for (let a = 0; a < tagSelected.length; a++) {
@@ -131,6 +132,7 @@ function searchTags() {
 	}
 }
 
+//! Creating any images that are under that are in the tagSelected array
 function tagImageCreate() {
 	for (let i = 0; i < tagSelected.length; i++) {
 		console.log(tagSelected[i].id);
@@ -193,12 +195,13 @@ function processImages() {
 		for (let i = 0; i < maxNumber.value; i++) {
 			var ranUnImages = Math.floor(Math.random() * data.length);
 			ranIamges.push(ranUnImages);
-			console.log(ranIamges);
+			// console.log(ranIamges);
 		}
 		createRandomImage(ranIamges);
 	}
 }
 
+//! Creating random images
 function createRandomImage(ranIamges) {
 	for (let i = 0; i < ranIamges.length; i++) {
 		// console.log(data[selRandom[i]]);
