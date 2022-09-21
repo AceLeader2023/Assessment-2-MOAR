@@ -9,6 +9,7 @@ const getRandom = {
 				randomNumberSet.push(randomNumbers);
 				console.log(randomNumberSet);
 			}
+			Image_GIF.imageGIFDefine(noImage);
 		} else {
 			for (let i = 0; i < noImage; i++) {
 				var randomNumbers = Math.floor(Math.random() * data.length);
@@ -16,6 +17,7 @@ const getRandom = {
 				randomNumberSet.push(randomNumbers);
 				console.log(randomNumberSet);
 			}
+			Image.imagedisplay(noImage);
 		}
 	},
 };
@@ -59,36 +61,12 @@ async function getGifImages() {
 }
 
 const Image_GIF = {
-	sepImage_GIF() {
-		var GIFSep = [];
-		for (let i = 0; i < GIFdata.length; i++) {
-			if (GIFdata[i].tags == "gif") {
-				GIFSep.push(GIFdata[i]);
-			}
-		}
-
-		Image_GIF.randomGIFSelection(GIFSep);
-	},
-
-	randomGIFSelection(GIFSep) {
-		var SeledGIFId = [];
-		// console.log(GIFSep);
-		var xImages = document.getElementById("numberofImages").value;
-		// console.log(xImages);
-
-		for (let i = 0; i < xImages; i++) {
-			var unSelGIFId = Math.floor(Math.random() * GIFSep.length);
-			SeledGIFId.push(GIFSep[unSelGIFId]);
-			console.log(SeledGIFId);
-		}
-		//
-
-		Image_GIF.imageGIFDefine(GIFSep, xImages, SeledGIFId);
-	},
-
-	imageGIFDefine(GIFSep, xImages, SeledGIFId) {
+	imageGIFDefine(noImage) {
 		console.log("HI");
-		for (let a = 0; a < xImages; a++) {
+		console.log(gifImages);
+		console.log(randomNumberSet);
+
+		for (let a = 0; a < noImage; a++) {
 			// * Creating Elements
 			//! COL Div
 			var divCol = document.createElement("div");
@@ -107,7 +85,7 @@ const Image_GIF = {
 			var newImg = document.createElement("img");
 			newImg.id = "gif";
 
-			newImg.setAttribute("src", "https://cataas.com/cat/" + SeledGIFId[a].id);
+			newImg.setAttribute("src", "https://cataas.com/cat/" + gifImages[randomNumberSet[a]].id);
 			newImg.setAttribute("alt", "gif");
 			newImg.className = "card-img-top";
 
@@ -120,5 +98,45 @@ const Image_GIF = {
 			newDiv.className = "card-body";
 			cards.appendChild(newDiv);
 		}
+		randomNumberSet.length = 0;
+	},
+};
+
+const Image = {
+	imagedisplay(noImage) {
+		for (let i = 0; i < noImage; i++) {
+			// * Creating Elements
+			//! COL Div
+			var divCol = document.createElement("div");
+			divCol.className = "col";
+
+			cardArea.appendChild(divCol);
+
+			//! Creating DIV - CardElement
+			var cards = document.createElement("div");
+			cards.className = "card h-100 shadow-sm";
+			cards.style = "width: 18rem";
+			divCol.id = "cols";
+			divCol.appendChild(cards);
+
+			//! Image elements
+			var newImg = document.createElement("img");
+			newImg.id = data[randomNumberSet[i]].id;
+			newImg.setAttribute("src", "https://cataas.com/cat/" + data[randomNumberSet[i]].id);
+			newImg.setAttribute("alt", data[randomNumberSet[i]].tags);
+			newImg.className = "card-img-top";
+
+			// newImg.style = "padding: 500px";
+			cards.appendChild(newImg);
+
+			//! Creating DIV - CardBody
+			var newDiv = document.createElement("div");
+			newDiv.id = "card-body";
+			newDiv.className = "card-body";
+			cards.appendChild(newDiv);
+
+			// console.log(selectNumbers[i].tags);
+		}
+		randomNumberSet.length = 0;
 	},
 };
