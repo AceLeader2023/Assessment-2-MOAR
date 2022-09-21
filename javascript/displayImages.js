@@ -1,7 +1,23 @@
 //! GET RANDOM NUMBERS
+const getRandom = {
+	numbers() {
+		var noImage = document.getElementById("numberofImages").value;
+		if (gifImageInputYes.checked == true) {
+			for (let i = 0; i < noImage; i++) {
+				var randomNumbers = Math.floor(Math.random() * gifImages.length);
+				console.log(randomNumbers);
+				randomNumberSet.push(randomNumbers);
+				console.log(randomNumberSet);
+			}
+		} else {
+			console.log("hi");
+		}
+	},
+};
 
 //! GIF IMAGES
-const getGifImages = async () => {
+//$ ASYNC FETCHING GIF Images ASYNC
+async function getGifImages() {
 	var fetchGIFData = await fetch("https://cataas.com/api/cats");
 	GifData = await fetchGIFData.json();
 
@@ -14,7 +30,8 @@ const getGifImages = async () => {
 	}
 
 	console.log(gifImages);
-};
+	getRandom.numbers();
+}
 
 const Image_GIF = {
 	sepImage_GIF() {

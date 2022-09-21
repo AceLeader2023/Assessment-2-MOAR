@@ -6,6 +6,7 @@ var gifImageInputYes = document.getElementById("yes"); //? Yes to GIF image
 var gifImageInputNo = document.getElementById("no"); //? GIF = no
 var selectNumbers = []; //? Defining a emtpy array
 var gifImages = [];
+randomNumberSet = [];
 
 let url = "https://cataas.com/cat/";
 
@@ -14,10 +15,12 @@ submitButton.addEventListener("click", loadImages);
 
 async function loadImages() {
 	// console.log(xImages.value);
-	var noImage = document.getElementById("numberofImages").value;
 
 	//! Do random images or GIF images
 	if (gifImageInputYes.checked == true) {
+		if (gifImages.length > 0) {
+			gifImages.length = 0;
+		}
 		getGifImages();
 
 		// displayGifImages(xImages);
