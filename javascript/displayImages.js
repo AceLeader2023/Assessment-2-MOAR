@@ -1,4 +1,21 @@
+//! GET RANDOM NUMBERS
+
 //! GIF IMAGES
+const getGifImages = async () => {
+	var fetchGIFData = await fetch("https://cataas.com/api/cats");
+	GifData = await fetchGIFData.json();
+
+	for (let i = 0; i < GifData.length; i++) {
+		for (let q = 0; q < GifData[i].tags.length; q++) {
+			if (GifData[i].tags[q] == "gif") {
+				gifImages.push(GifData[i]);
+			}
+		}
+	}
+
+	console.log(gifImages);
+};
+
 const Image_GIF = {
 	sepImage_GIF() {
 		var GIFSep = [];
@@ -28,6 +45,7 @@ const Image_GIF = {
 	},
 
 	imageGIFDefine(GIFSep, xImages, SeledGIFId) {
+		console.log("HI");
 		for (let a = 0; a < xImages; a++) {
 			// * Creating Elements
 			//! COL Div

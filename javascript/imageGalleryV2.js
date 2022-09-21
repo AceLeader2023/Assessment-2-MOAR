@@ -5,7 +5,8 @@ var cardArea = document.getElementById("row"); //?Area for photos
 var gifImageInputYes = document.getElementById("yes"); //? Yes to GIF image
 var gifImageInputNo = document.getElementById("no"); //? GIF = no
 var selectNumbers = []; //? Defining a emtpy array
-var gifs = [];
+var gifImages = [];
+
 let url = "https://cataas.com/cat/";
 
 //$ Event Listeners
@@ -13,15 +14,41 @@ submitButton.addEventListener("click", loadImages);
 
 async function loadImages() {
 	// console.log(xImages.value);
-	var xImages = document.getElementById("numberofImages").value;
+	var noImage = document.getElementById("numberofImages").value;
+
 	//! Do random images or GIF images
 	if (gifImageInputYes.checked == true) {
-		// displayGifImages(xImages);
-		var fetchGIFData = await fetch("https://cataas.com/api/cats");
-		GIFdata = await fetchGIFData.json();
-		console.log(GIFdata);
+		getGifImages();
 
-		Image_GIF.sepImage_GIF(xImages);
+		// displayGifImages(xImages);
+		// var fetchGIFData = await fetch("https://cataas.com/api/cats");
+		// GIFdata = await fetchGIFData.json();
+
+		// console.log(GIFdata[1].tags.length);
+
+		// for (let i = 0; i < GIFdata.length; i++) {
+		// 	for (let q = 0; q < GIFdata[i].tags.length; q++) {
+		// 		if (GIFdata[i].tags[q] == "gif") {
+		// 			console.log("hey");
+		// 			console.log(GIFdata[i]);
+		// 			gifs.push(GIFdata[i]);
+		// 		}
+		// 	}
+		// }
+		////
+		// if (GIFdata[1].tag == "gif") {
+		// 	console.log("hi");
+		// }
+
+		// // Image_GIF.sepImage_GIF(xImages);
+		// //? Random Array
+		// for (let i = 0; i < noImage; i++) {
+		// 	var randomImgNumbers = Math.floor(Math.random() * GIFdata.length);
+
+		// 	gifs.push(randomImgNumbers);
+		// 	console.log(randomImgNumbers);
+		// }
+		// console.log(gifs);
 	} else {
 		var fetchData = await fetch("https://cataas.com/api/cats"); //? Fetching data
 		data = await fetchData.json(); //? changing data to json
@@ -30,6 +57,18 @@ async function loadImages() {
 	}
 
 	// console.log(data[1].id);
+}
+
+//! Random Images
+function getRandomImages(xImages) {
+	console.log(data);
+	for (let i = 0; i < xImages; i++) {
+		var unSelNumber = Math.floor(Math.random() * data.length);
+		selectNumbers.push(data[unSelNumber]);
+	}
+	console.log(selectNumbers);
+	// randomImages(xImages);
+	logImages.randomImages(xImages);
 }
 
 const GETGIFImage = async () => {};
@@ -65,18 +104,6 @@ async function displayGifImages() {
 	newDiv.id = "card-body";
 	newDiv.className = "card-body";
 	cards.appendChild(newDiv);
-}
-
-//! Random Images
-function getRandomImages(xImages) {
-	console.log(data);
-	for (let i = 0; i < xImages; i++) {
-		var unSelNumber = Math.floor(Math.random() * data.length);
-		selectNumbers.push(data[unSelNumber]);
-	}
-	console.log(selectNumbers);
-	// randomImages(xImages);
-	logImages.randomImages(xImages);
 }
 
 function randomImages(xImages) {
