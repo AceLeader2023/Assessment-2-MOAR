@@ -10,10 +10,35 @@ const getRandom = {
 				console.log(randomNumberSet);
 			}
 		} else {
-			console.log("hi");
+			for (let i = 0; i < noImage; i++) {
+				var randomNumbers = Math.floor(Math.random() * data.length);
+				console.log(randomNumbers);
+				randomNumberSet.push(randomNumbers);
+				console.log(randomNumberSet);
+			}
 		}
 	},
 };
+
+//! STILL IMAGES
+//$ ASYNC FETCHING Images ASYNC
+async function getImages() {
+	var fetchData = await fetch("https://cataas.com/api/cats");
+	data = await fetchData.json();
+	console.log(data.length);
+	console.log(data[1].tags.length);
+	console.log(data[1]);
+	for (let i = 0; i < data.length; i++) {
+		for (let q = 0; q < data[i].tags.length; q++) {
+			if (data[i].tags[q] == "gif") {
+				data.splice(i, 1);
+				console.log(data);
+			}
+		}
+	}
+	console.log(data);
+	getRandom.numbers();
+}
 
 //! GIF IMAGES
 //$ ASYNC FETCHING GIF Images ASYNC

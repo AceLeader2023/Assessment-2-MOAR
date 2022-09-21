@@ -6,7 +6,9 @@ var gifImageInputYes = document.getElementById("yes"); //? Yes to GIF image
 var gifImageInputNo = document.getElementById("no"); //? GIF = no
 var selectNumbers = []; //? Defining a emtpy array
 var gifImages = [];
-randomNumberSet = [];
+var images = [];
+var randomNumberSet = [];
+var data;
 
 let url = "https://cataas.com/cat/";
 
@@ -22,41 +24,12 @@ async function loadImages() {
 			gifImages.length = 0;
 		}
 		getGifImages();
-
-		// displayGifImages(xImages);
-		// var fetchGIFData = await fetch("https://cataas.com/api/cats");
-		// GIFdata = await fetchGIFData.json();
-
-		// console.log(GIFdata[1].tags.length);
-
-		// for (let i = 0; i < GIFdata.length; i++) {
-		// 	for (let q = 0; q < GIFdata[i].tags.length; q++) {
-		// 		if (GIFdata[i].tags[q] == "gif") {
-		// 			console.log("hey");
-		// 			console.log(GIFdata[i]);
-		// 			gifs.push(GIFdata[i]);
-		// 		}
-		// 	}
-		// }
-		////
-		// if (GIFdata[1].tag == "gif") {
-		// 	console.log("hi");
-		// }
-
-		// // Image_GIF.sepImage_GIF(xImages);
-		// //? Random Array
-		// for (let i = 0; i < noImage; i++) {
-		// 	var randomImgNumbers = Math.floor(Math.random() * GIFdata.length);
-
-		// 	gifs.push(randomImgNumbers);
-		// 	console.log(randomImgNumbers);
-		// }
-		// console.log(gifs);
 	} else {
-		var fetchData = await fetch("https://cataas.com/api/cats"); //? Fetching data
-		data = await fetchData.json(); //? changing data to json
-		console.log(data);
-		getRandomImages(xImages);
+		getImages();
+		// var fetchData = await fetch("https://cataas.com/api/cats"); //? Fetching data
+		// data = await fetchData.json(); //? changing data to json
+		// console.log(data);
+		// getRandomImages(xImages);
 	}
 
 	// console.log(data[1].id);
