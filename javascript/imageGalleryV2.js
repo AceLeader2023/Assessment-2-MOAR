@@ -16,7 +16,12 @@ async function loadImages() {
 	var xImages = document.getElementById("numberofImages").value;
 	//! Do random images or GIF images
 	if (gifImageInputYes.checked == true) {
-		displayGifImages(xImages);
+		// displayGifImages(xImages);
+		var fetchGIFData = await fetch("https://cataas.com/api/cats");
+		GIFdata = await fetchGIFData.json();
+		console.log(GIFdata);
+
+		Image_GIF.sepImage_GIF(xImages);
 	} else {
 		var fetchData = await fetch("https://cataas.com/api/cats"); //? Fetching data
 		data = await fetchData.json(); //? changing data to json
@@ -26,6 +31,8 @@ async function loadImages() {
 
 	// console.log(data[1].id);
 }
+
+const GETGIFImage = async () => {};
 
 async function displayGifImages() {
 	// * Creating Elements
@@ -46,7 +53,7 @@ async function displayGifImages() {
 	var newImg = document.createElement("img");
 	newImg.id = "gif";
 
-	newImg.setAttribute("src", "https://cataas.com/cat/gif");
+	newImg.setAttribute("src", "https://cataas.com/cat/595f280a557291a9750ebf62");
 	newImg.setAttribute("alt", "gif");
 	newImg.className = "card-img-top";
 
@@ -68,7 +75,8 @@ function getRandomImages(xImages) {
 		selectNumbers.push(data[unSelNumber]);
 	}
 	console.log(selectNumbers);
-	randomImages(xImages);
+	// randomImages(xImages);
+	logImages.randomImages(xImages);
 }
 
 function randomImages(xImages) {
@@ -90,7 +98,7 @@ function randomImages(xImages) {
 		//! Image elements
 		var newImg = document.createElement("img");
 		newImg.id = selectNumbers[i].id;
-		newImg.setAttribute("src", "https://cataas.com/cat?gif/" + selectNumbers[i].id);
+		newImg.setAttribute("src", "https://cataas.com/cat/" + selectNumbers[i].id + "/says/HI");
 		newImg.setAttribute("alt", selectNumbers[i].tags);
 		newImg.className = "card-img-top";
 
@@ -106,4 +114,5 @@ function randomImages(xImages) {
 		console.log(selectNumbers[i].tags);
 	}
 	selectNumbers.length = 0;
+	console.log(localStorage);
 }
