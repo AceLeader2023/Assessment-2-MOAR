@@ -9,7 +9,8 @@ const getRandom = {
 				randomNumberSet.push(randomNumbers);
 				console.log(randomNumberSet);
 			}
-			Image_GIF.imageGIFDefine(noImage);
+			// Image_GIF.imageGIFDefine(noImage);
+			Image_GIF.imageGifDesign(noImage);
 		} else {
 			for (let i = 0; i < noImage; i++) {
 				var randomNumbers = Math.floor(Math.random() * data.length);
@@ -61,6 +62,17 @@ async function getGifImages() {
 }
 
 const Image_GIF = {
+	imageGifDesign(noImage) {
+		GIFQueue.length = 0;
+
+		console.log(randomNumberSet);
+		console.log(gifImages[1].id);
+		for (let i = 0; i < noImage; i++) {
+			GIFQueue[i] = "https://cataas.com/cat/" + gifImages[randomNumberSet[i]].id;
+		}
+		console.log(GIFQueue);
+	},
+
 	imageGIFDefine(noImage) {
 		console.log("HI");
 		console.log(gifImages);

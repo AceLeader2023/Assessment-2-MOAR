@@ -9,6 +9,8 @@ var gifImages = [];
 var images = [];
 var randomNumberSet = [];
 var data;
+var finishImage;
+var GIFQueue = [];
 
 let url = "https://cataas.com/cat/";
 
