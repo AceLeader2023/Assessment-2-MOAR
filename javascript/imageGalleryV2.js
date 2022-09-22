@@ -4,6 +4,7 @@ var submitButton = document.getElementById("submit"); //? Submit button
 var cardArea = document.getElementById("row"); //?Area for photos
 var gifImageInputYes = document.getElementById("yes"); //? Yes to GIF image
 var gifImageInputNo = document.getElementById("no"); //? GIF = no
+var size = document.getElementById("sizes");
 var selectNumbers = []; //? Defining a emtpy array
 var gifImages = [];
 var images = [];

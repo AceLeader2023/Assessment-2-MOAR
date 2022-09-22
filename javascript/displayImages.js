@@ -70,7 +70,8 @@ const Image_GIF = {
 		for (let i = 0; i < noImage; i++) {
 			GIFQueue[i] = "https://cataas.com/cat/" + gifImages[randomNumberSet[i]].id;
 		}
-		console.log(GIFQueue);
+
+		console.log(size.value);
 	},
 
 	imageGIFDefine(noImage) {
