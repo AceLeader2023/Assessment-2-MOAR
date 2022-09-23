@@ -71,15 +71,30 @@ const Image_GIF = {
 			GIFQueue[i] = "https://cataas.com/cat/" + gifImages[randomNumberSet[i]].id;
 		}
 
-		console.log(size.value);
+		console.log(GIFQueue);
+
+		if (size.value == "or") {
+			for (let i = 0; i < GIFQueue.length; i++) {
+				console.log(size.value);
+				GIFQueue[i] = GIFQueue[i] + "?type=" + size.value;
+			}
+		} else if (size.value == "md") {
+			for (let i = 0; i < GIFQueue.length; i++) {
+				console.log(size.value);
+				GIFQueue[i] = GIFQueue[i] + "?type=" + size.value;
+			}
+		} else {
+			for (let i = 0; i < GIFQueue.length; i++) {
+				GIFQueue[i] = GIFQueue[i] + "?type=" + size.value;
+			}
+		}
+		console.log(GIFQueue);
+
+		Image_GIF.imageGIFDefine();
 	},
 
-	imageGIFDefine(noImage) {
-		console.log("HI");
-		console.log(gifImages);
-		console.log(randomNumberSet);
-
-		for (let a = 0; a < noImage; a++) {
+	imageGIFDefine() {
+		for (let a = 0; a < GIFQueue.length; a++) {
 			// * Creating Elements
 			//! COL Div
 			var divCol = document.createElement("div");
@@ -97,8 +112,7 @@ const Image_GIF = {
 			//! Image elements
 			var newImg = document.createElement("img");
 			newImg.id = "gif";
-
-			newImg.setAttribute("src", "https://cataas.com/cat/" + gifImages[randomNumberSet[a]].id);
+			newImg.setAttribute("src", GIFQueue[a]);
 			newImg.setAttribute("alt", "gif");
 			newImg.className = "card-img-top";
 
