@@ -6,6 +6,8 @@ var cardArea = document.getElementById("row"); //?Area for photos
 // var gifImageInputNo = document.getElementById("no"); //? GIF = no
 var enableGif = document.getElementById("flexSwitchCheckChecked enableGIF");
 var size = document.getElementById("size floatingSelect");
+var say = document.getElementById("flexSwitchCheckChecked textSay");
+var textSayAble = document.getElementById("sayTextValue");
 var selectNumbers = []; //? Defining a emtpy array
 var gifImages = [];
 var images = [];
@@ -18,6 +20,7 @@ let url = "https://cataas.com/cat/";
 
 //$ Event Listeners
 submitButton.addEventListener("click", loadImages);
+say.addEventListener("mousedown", able);
 
 async function loadImages() {
 	// console.log(xImages.value);
@@ -30,5 +33,14 @@ async function loadImages() {
 		getGifImages();
 	} else {
 		getImages();
+	}
+}
+
+function able() {
+	if (say.checked != true) {
+		textSayAble.disabled = false;
+	} else {
+		textSayAble.disabled = true;
+		textSayAble.value = "";
 	}
 }
