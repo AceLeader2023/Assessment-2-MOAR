@@ -29,10 +29,54 @@
 				</ul>
 			</header>
 		</div>
-		<!--s FORM CONTAINER -->
+
+		<!-- !NEW FORM 2v -->
 		<form class="row g-2 m-2">
-			<!-- ? Number of Images wanted -->
-			<div class="col-md-4">
+			<!-- ? Number of images -->
+			<div class="col-md-2 form-floating">
+				<input
+					id="no.Images floatingInputValue"
+					type="text"
+					class="form-control"
+					placeholder="Leave a number here"
+				/>
+				<label for="no.Images">How many images do you want?</label>
+			</div>
+
+			<!-- ? Size -->
+			<div class="col-md-3 form-floating">
+				<select
+					id="size floatingSelect"
+					class="form-select mb-2"
+					area-label="Floating label select example"
+				>
+					<option value="or"></option>
+					<option value="sm">Small</option>
+					<option value="md">Mediem</option>
+					<option value="or">Orginal</option>
+				</select>
+				<label for="floatingSelect">Select a size</label>
+
+				<!-- ? Enable GIF -->
+				<div class="col-md-3 form-check form-switch">
+					<input
+						class="form-check-input"
+						type="checkbox"
+						role="switch"
+						id="flexSwitchCheckChecked enableGIF"
+					/>
+					<label class="form-check-label" for="flexSwitchCheckChecked">GIF?</label>
+				</div>
+			</div>
+			<div class="col-12" id="messageArea">
+				<button class="btn btn-primary" type="button" id="submit">submit</button>
+			</div>
+		</form>
+
+		<!--s FORM CONTAINER -->
+		<!-- <form class="row g-2 m-2"> -->
+		<!-- ? Number of Images wanted -->
+		<!-- <div class="col-md-4">
 				<label for="Nimages">How many Images:</label>
 				<input
 					type="text"
@@ -64,7 +108,7 @@
 			<div class="col-12" id="messageArea">
 				<button class="btn btn-primary" type="button" id="submit">submit</button>
 			</div>
-		</form>
+		</form> -->
 		<!--f FORM CONTAINER  -->
 
 		<!--s IMAGES  -->

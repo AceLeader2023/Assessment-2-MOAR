@@ -1,8 +1,8 @@
 //! GET RANDOM NUMBERS
 const getRandom = {
 	numbers() {
-		var noImage = document.getElementById("numberofImages").value;
-		if (gifImageInputYes.checked == true) {
+		var noImage = document.getElementById("no.Images floatingInputValue").value;
+		if (enableGif.checked == true) {
 			for (let i = 0; i < noImage; i++) {
 				var randomNumbers = Math.floor(Math.random() * gifImages.length);
 				console.log(randomNumbers);
