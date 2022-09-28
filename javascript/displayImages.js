@@ -13,7 +13,7 @@ const getRandom = {
 			Image_GIF.imageGifDesign(noImage);
 		} else {
 			for (let i = 0; i < noImage; i++) {
-				var randomNumbers = Math.floor(Math.random() * data.length);
+				var randomNumbers = Math.floor(Math.random() * stillImages.length);
 				console.log(randomNumbers);
 				randomNumberSet.push(randomNumbers);
 				console.log(randomNumberSet);
@@ -23,26 +23,38 @@ const getRandom = {
 	},
 };
 
-//! STILL IMAGES
+// SECTION Still Images
 //$ ASYNC FETCHING Images ASYNC
 async function getImages() {
+	var yesStill = 0;
+	stillImages.length = 0
+	console.log(yesStill)
 	var fetchData = await fetch("https://cataas.com/api/cats");
 	data = await fetchData.json();
-	console.log(data.length);
-	console.log(data[1].tags.length);
-	console.log(data[1]);
-	for (let i = 0; i < data.length; i++) {
-		for (let q = 0; q < data[i].tags.length; q++) {
-			if (data[i].tags[q] == "gif") {
-				data.splice(i, 1);
-				console.log(data);
-			}
+
+	// NOTE To get rid of any gif images
+	for (let a = 0; a < data.length; a++) {
+		for (let b = 0; b < data[a].tags.length; b++) {
+			console.log[a]
+			// NOTE Checks if there is a gif in array
+			if (data[a].tags[b] != "gif") {
+				yesStill = yesStill + 1
+			} 
 		}
+
+		// NOTE If yeses equals the number of tags in image
+		if (yesStill == data[a].tags.length) {
+			stillImages.push(data[a])	
+		}
+		// NOTE To reset yesStill
+		yesStill = 0
 	}
-	console.log(data);
 	getRandom.numbers();
 }
 
+// !SECTION
+
+// SECTION GIF Images
 //! GIF IMAGES
 //$ ASYNC FETCHING GIF Images ASYNC
 async function getGifImages() {
@@ -60,6 +72,7 @@ async function getGifImages() {
 	console.log(gifImages);
 	getRandom.numbers();
 }
+// !SECTION
 
 const Image_GIF = {
 	imageGifDesign(noImage) {
@@ -148,9 +161,9 @@ const Image = {
 
 			//! Image elements
 			var newImg = document.createElement("img");
-			newImg.id = data[randomNumberSet[i]].id;
-			newImg.setAttribute("src", "https://cataas.com/cat/" + data[randomNumberSet[i]].id);
-			newImg.setAttribute("alt", data[randomNumberSet[i]].tags);
+			newImg.id = stillImages[randomNumberSet[i]].id;
+			newImg.setAttribute("src", "https://cataas.com/cat/" + stillImages[randomNumberSet[i]].id);
+			newImg.setAttribute("alt", stillImages[randomNumberSet[i]].tags);
 			newImg.className = "card-img-top";
 
 			// newImg.style = "padding: 500px";

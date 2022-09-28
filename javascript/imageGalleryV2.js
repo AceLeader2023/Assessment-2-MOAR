@@ -15,6 +15,7 @@ var randomNumberSet = [];
 var data;
 var finishImage;
 var GIFQueue = [];
+var stillImages = [];
 
 let url = "https://cataas.com/cat/";
 
