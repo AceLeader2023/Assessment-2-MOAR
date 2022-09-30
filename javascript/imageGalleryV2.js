@@ -24,17 +24,7 @@ submitButton.addEventListener("click", loadImages);
 say.addEventListener("mousedown", able);
 
 async function loadImages() {
-	// console.log(xImages.value);
-
-	//! Do random images or GIF images
-	if (enableGif.checked == true) {
-		if (gifImages.length > 0) {
-			gifImages.length = 0;
-		}
-		getGifImages();
-	} else {
-		getImages();
-	}
+	getImages();
 }
 
 function able() {

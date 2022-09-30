@@ -23,53 +23,35 @@ const getRandom = {
 	},
 };
 
-// SECTION Still Images
-//$ ASYNC FETCHING Images ASYNC
+// SECTION fetching IMAGES
+// TOPIC ASYNC FETCHING Images ASYNC
 async function getImages() {
 	var yesStill = 0;
-	stillImages.length = 0
-	console.log(yesStill)
+	stillImages.length = 0;
+	console.log(yesStill);
 	var fetchData = await fetch("https://cataas.com/api/cats");
 	data = await fetchData.json();
 
-	// NOTE To get rid of any gif images
+	// NOTE To sort STILL or GIF
 	for (let a = 0; a < data.length; a++) {
 		for (let b = 0; b < data[a].tags.length; b++) {
-			console.log[a]
+			console.log[a];
 			// NOTE Checks if there is a gif in array
 			if (data[a].tags[b] != "gif") {
-				yesStill = yesStill + 1
-			} 
-		}
-
-		// NOTE If yeses equals the number of tags in image
-		if (yesStill == data[a].tags.length) {
-			stillImages.push(data[a])	
-		}
-		// NOTE To reset yesStill
-		yesStill = 0
-	}
-	getRandom.numbers();
-}
-
-// !SECTION
-
-// SECTION GIF Images
-//! GIF IMAGES
-//$ ASYNC FETCHING GIF Images ASYNC
-async function getGifImages() {
-	var fetchGIFData = await fetch("https://cataas.com/api/cats");
-	GifData = await fetchGIFData.json();
-
-	for (let i = 0; i < GifData.length; i++) {
-		for (let q = 0; q < GifData[i].tags.length; q++) {
-			if (GifData[i].tags[q] == "gif") {
-				gifImages.push(GifData[i]);
+				yesStill = yesStill + 1;
 			}
 		}
-	}
 
-	console.log(gifImages);
+		// NOTE checking whether - ...tags.length == yesStill
+		if (yesStill == data[a].tags.length) {
+			stillImages.push(data[a]); // puts Still Images in with stillImages
+		} else {
+			// NOTE checking wheather - ...tags.length != Still
+			gifImages.push(data[a]); // puts GIFs in with gifImages
+		}
+		// NOTE To reset yesStill
+		yesStill = 0;
+	}
 	getRandom.numbers();
 }
 // !SECTION
