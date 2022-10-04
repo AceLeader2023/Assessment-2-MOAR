@@ -16,6 +16,7 @@ var data
 var finishImage
 var GIFQueue = [] // for GIF images
 var stillImages = []
+var stillImagesQueue = []
 var imageURL = []
 var colorSay = [
 	"AliceBlue",
