@@ -66,7 +66,7 @@ const getRandom = {
 			// Image_GIF.imageGIFDefine(noImage);
 
 			// Image_GIF.imageGifDesign(noImage)
-			imageGenerator.GIFGenerator()
+			imageGenerator.sayGenerator()
 		} else {
 			for (let i = 0; i < noImage; i++) {
 				var randomNumbers = Math.floor(Math.random() * stillImages.length)
@@ -74,7 +74,8 @@ const getRandom = {
 				randomNumberSet.push(randomNumbers)
 				console.log(randomNumberSet)
 			}
-			Image.imagedisplay(noImage)
+			// Image.imagedisplay(noImage)
+			imageGenerator.sayGenerator()
 		}
 	},
 }
@@ -90,7 +91,6 @@ const Image_GIF = {
 		}
 
 		// TODO Complete say element
-		// NOTE Getting value of SAY text input + storing in var
 		// VAR
 		console.log(GIFQueue)
 

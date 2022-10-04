@@ -14,19 +14,38 @@ var images = []
 var randomNumberSet = []
 var data
 var finishImage
-var GIFQueue = []
+var GIFQueue = [] // for GIF images
 var stillImages = []
+var imageURL = []
+var colorSay = [
+	"AliceBlue",
+	"AntiqueWhite",
+	"Aqua",
+	"Aquamarine",
+	"Azure",
+	"Beige",
+	"Bisque",
+	"black",
+	"blanchedalmond",
+	"blue",
+	"blueviolet",
+	"brown",
+	"burlywood",
+	"cadetblue",
+]
 
 let url = "https://cataas.com/cat/"
 
-//$ Event Listeners
+// Event Listeners
 submitButton.addEventListener("click", loadImages)
 say.addEventListener("mousedown", able)
 
+// To display images
 async function loadImages() {
 	getImages()
 }
 
+// Disabling and enbling text on images.
 function able() {
 	if (say.checked != true) {
 		textSayAble.disabled = false
