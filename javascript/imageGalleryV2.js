@@ -8,6 +8,8 @@ var enableGif = document.getElementById("flexSwitchCheckChecked enableGIF")
 var size = document.getElementById("size floatingSelect")
 var say = document.getElementById("flexSwitchCheckChecked textSay")
 var textSayAble = document.getElementById("sayTextValue")
+var sayColor = document.getElementById("color floatingSelect")
+
 var selectNumbers = [] //? Defining a emtpy array
 var gifImages = []
 var images = []
@@ -50,8 +52,10 @@ async function loadImages() {
 function able() {
 	if (say.checked != true) {
 		textSayAble.disabled = false
+		sayColor.disabled = false
 	} else {
 		textSayAble.disabled = true
 		textSayAble.value = ""
+		sayColor.disabled = true
 	}
 }

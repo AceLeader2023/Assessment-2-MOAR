@@ -17,7 +17,7 @@ const imageGenerator = {
 
 		// NOTE If Say is enable and GIF is true then this
 		if (say.checked == true && enableGif.checked == true) {
-			console.log("true true")
+			console.log("T T")
 			var sayLength = document.getElementById("sayTextValue")
 			var sayColor = document.getElementById("color floatingSelect")
 			console.log(sayLength.value.length)
@@ -26,9 +26,9 @@ const imageGenerator = {
 				console.log("asd")
 				for (let i = 0; i < noImage; i++) {
 					// NOTE Setting URL with SAY text
-					GIFQueue[i] = "https://cataas.com/cat/" + gifImages[randomNumberSet[i]].id + "/says/" + textSayAble.value + "?color=" + sayColor
-					console.log(gifImages)
+					GIFQueue[i] = "https://cataas.com/cat/" + gifImages[randomNumberSet[i]].id + "/says/" + textSayAble.value + "?color=" + sayColor.value
 				}
+				console.log(GIFQueue)
 				this.UrlGenerator()
 				// TODO Create a invilid message via another doc that holds all invild messages.
 			} else if (sayLength.value.length == 0) {
@@ -36,19 +36,31 @@ const imageGenerator = {
 				//invalidMessages.SayText()
 			}
 		} else if (say.checked == false && enableGif.checked == true) {
-			console.log("false trye")
+			console.log("F T")
 			console.log(gifImages)
+			console.log(randomNumberSet)
 			for (let i = 0; i < noImage; i++) {
 				GIFQueue[i] = "https://cataas.com/cat/" + gifImages[randomNumberSet[i]].id
-				console.log(gifImages)
+				console.log(GIFQueue)
 			}
 			this.UrlGenerator()
 		} else if (say.checked == true && enableGif.checked == false) {
-			console.log("true false")
+			var sayColor = document.getElementById("color floatingSelect")
+			console.log("T F")
+			console.log(randomNumberSet)
+			console.log(sayColor.value)
 			for (let i = 0; i < noImage; i++) {
-				stillImagesQueue[i] = "https://cataas.com/cat/" + stillImages[randomNumberSet[i]].id + "/says/" + textSayAble.value + "?color=" + sayColor
+				stillImagesQueue[i] =
+					"https://cataas.com/cat/" + stillImages[randomNumberSet[i]].id + "/says/" + textSayAble.value + "?color=" + sayColor.value
 				console.log(gifImages)
 			}
+			this.UrlGenerator()
+		} else if (say.checked == false && enableGif.checked == false) {
+			console.log("F F")
+			for (let i = 0; i < noImage; i++) {
+				stillImagesQueue[i] = "https://cataas.com/cat/" + stillImages[randomNumberSet[i]].id
+			}
+			// console.log(stillImagesQueue)
 			this.UrlGenerator()
 		}
 
@@ -67,7 +79,14 @@ const imageGenerator = {
 				imageURL[i] = GIFQueue[i]
 			}
 		}
-		Image_GIF.imageGIFDefine()
+
+		display.informationGet()
+		// if (enableGif.checked == true) {
+		// 	Image_GIF.imageGIFDefine()
+		// } else {
+		// 	console.log(stillImagesQueue)
+		// 	Image.imagedisplay()
+		// }
 	},
 
 	// sayColorGenerator() {
