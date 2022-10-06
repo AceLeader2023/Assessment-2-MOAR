@@ -3,7 +3,7 @@
 
 // !SECTION
 
-// SECTION Sorting images into GIF or not GIF and selecting images
+// NOTE Sorting images into GIF or not GIF and selecting images
 
 // VAR to find the number of images the user of app wants
 var noImage = document.getElementById("no.Images floatingInputValue").value // Getting value of number of images
