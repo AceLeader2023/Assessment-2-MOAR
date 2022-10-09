@@ -8,7 +8,7 @@ var size = document.getElementById("size floatingSelect")
 var say = document.getElementById("flexSwitchCheckChecked textSay")
 var textSayAble = document.getElementById("sayTextValue")
 var sayColor = document.getElementById("color floatingSelect")
-
+var noImageError = document.getElementById("noImageError")
 var selectNumbers = [] //? Defining a emtpy array
 var gifImages = []
 var images = []
@@ -44,8 +44,8 @@ say.addEventListener("mousedown", able)
 
 // To display images
 async function loadImages() {
-	//await formValidation.formValidator()
-	//	console.log("CHECK DONE")
+	await formValidation.formValidator()
+	console.log("CHECK DONE")
 	getImages()
 }
 
