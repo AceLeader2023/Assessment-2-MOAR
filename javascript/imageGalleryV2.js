@@ -2,8 +2,7 @@
 var submitButton = document.getElementById("submit") //? Submit button
 //? Input box
 var cardArea = document.getElementById("row") //?Area for photos
-// var gifImageInputYes = document.getElementById("yes"); //? Yes to GIF image
-// var gifImageInputNo = document.getElementById("no"); //? GIF = no
+
 var enableGif = document.getElementById("flexSwitchCheckChecked enableGIF")
 var size = document.getElementById("size floatingSelect")
 var say = document.getElementById("flexSwitchCheckChecked textSay")
@@ -45,6 +44,8 @@ say.addEventListener("mousedown", able)
 
 // To display images
 async function loadImages() {
+	//await formValidation.formValidator()
+	//	console.log("CHECK DONE")
 	getImages()
 }
 
