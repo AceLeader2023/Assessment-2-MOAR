@@ -2,6 +2,7 @@
 <html lang="en">
 	<head>
 		<link rel="stylesheet" href="/css/main.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,8 +15,12 @@
 		/>
 	</head>
 	<body>
-		<div class="container">
-			<header class="d-flex justify-content-center py-3">
+		<!--NOTE - Error message FETCHING  -->
+		<div class="error-container text-center mt-0 mb-0 bg-danger" id="error-message-fetching">
+			<p class="mb-0"><i class="fa-solid fa-circle-info"></i> Unforuntly this service is out of service at the moment, please check back later</p>
+		</div>
+		<div class="container mt-0">
+			<header class="d-flex justify-content-center py-3 mt-0">
 				<ul class="nav nav-pills">
 					<li class="nav-item">
 						<a href="index.html" class="nav-link" aria-current="page">Home</a>
@@ -36,7 +41,11 @@
 			<div class="col-md-2 form-floating">
 				<input id="no.Images floatingInputValue" type="text" class="form-control" placeholder="Leave a number here" />
 				<label for="no.Images">How many images do you want?</label>
-				<div><p id="noImageError" class="error">Must be above 0</p></div>
+
+				<!--NOTE - Error message -->
+				<div class="error-container">
+					<p id="noImageError" class="error-text"><i class="fa-solid fa-circle-info"></i> Must be above 0</p>
+				</div>
 			</div>
 
 			<!-- ? Size -->
@@ -64,8 +73,12 @@
 					<div class="form-floating">
 						<input id="sayTextValue" class="form-control" type="text" placeholder="Hi" disabled />
 						<label for="sayTextValue">What do you want your Cat to say?</label>
+
+						<!--NOTE - error message -->
 						<div class="error-container">
-							<p class="error-text" id="sayError">Hi</p>
+							<p class="error-text" id="sayError">
+								<i class="fa-solid fa-circle-info"></i> The length of the text above needs to be longer then 0 characters please.
+							</p>
 						</div>
 					</div>
 					<div class="col-md-3">

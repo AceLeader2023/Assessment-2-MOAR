@@ -19,8 +19,14 @@
 } */
 
 /*NOTE - For the error message that are within the form*/
-.error {
+.error-text {
 	color: red;
 	font-size: 10pt;
 	visibility: hidden;
+}
+
+#error-message-fetching {
+	color: white;
+	font-weight: bold;
+	/* display: none; */
 }

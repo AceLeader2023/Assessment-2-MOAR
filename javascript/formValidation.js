@@ -19,9 +19,9 @@ const formValidation = {
 			console.log("YEAH")
 			if (sayLength.value.length == 0) {
 				console.log("ERROR - none")
-				sayError.style.visibility = "hidden"
-			} else if (sayLength.value.length != 0) {
 				sayError.style.visibility = "visible"
+			} else if (sayLength.value.length != 0) {
+				sayError.style.visibility = "hidden"
 			}
 		}
 	},
