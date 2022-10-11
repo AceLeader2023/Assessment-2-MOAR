@@ -11,14 +11,22 @@
 
 // SECTION Async Function Fetching Data
 async function getImages() {
-	// NOTE Setting all arrays to 0 length so there is no repeat
-	stillImages.length = 0
-	gifImages.length = 0
+	try {
+		// NOTE Setting all arrays to 0 length so there is no repeat
+		stillImages.length = 0
+		gifImages.length = 0
 
-	// NOTE Fetching Data
-	var fetchData = await fetch("https://cataas.com/api/cats")
-	data = await fetchData.json() // NOTE Changing to json format
-	creatingSortedData.sort() // run next class - sorting
+		// NOTE Fetching Data
+		var fetchData = await fetch("https://cataas.com/api/cats")
+		data = await fetchData.json() // NOTE Changing to json format
+		creatingSortedData.sort() // run next class - sorting
+	} catch {
+		anime({
+			targets: errorMessageAnime,
+			duration: 1000,
+			translateY: 150,
+		})
+	}
 }
 // !SECTION
 

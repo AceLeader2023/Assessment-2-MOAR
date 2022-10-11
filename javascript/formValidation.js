@@ -1,4 +1,5 @@
 //NOTE - adding animation to fetching error message
+var errorMessageAnime = document.getElementById("error-message-fetching")
 
 const formValidation = {
 	formValidator() {
@@ -24,11 +25,8 @@ const formValidation = {
 				sayError.style.visibility = "visible"
 			} else if (sayLength.value.length != 0) {
 				sayError.style.visibility = "hidden"
-				anime({
-					targets: "#error-message-fetching",
-					duration: 800,
-					translateY: 150,
-				})
+
+				console.log("YYEAH")
 			}
 		}
 	},
