@@ -2,6 +2,8 @@ const formValidation = {
 	formValidator() {
 		var noImage = document.getElementById("no.Images floatingInputValue").value
 		noImage = Number(noImage)
+
+		//NOTE - Checking that number is above 0
 		if (noImage != 0) {
 			console.log("ERROR")
 			noImageError.style.visibility = "hidden"
@@ -18,6 +20,8 @@ const formValidation = {
 			if (sayLength.value.length == 0) {
 				console.log("ERROR - none")
 				sayError.style.visibility = "hidden"
+			} else if (sayLength.value.length != 0) {
+				sayError.style.visibility = "visible"
 			}
 		}
 	},

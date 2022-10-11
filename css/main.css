@@ -17,3 +17,10 @@
 #hide {
 	visibility: hidden;
 } */
+
+/*NOTE - For the error message that are within the form*/
+.error {
+	color: red;
+	font-size: 10pt;
+	visibility: hidden;
+}
