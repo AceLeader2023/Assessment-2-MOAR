@@ -38,3 +38,11 @@ html {
 
 	/* display: none; */
 }
+
+.nav-link {
+	color: #333 !important;
+}
+
+.nav-link .active {
+	background-color: blanchedalmond !important;
+}

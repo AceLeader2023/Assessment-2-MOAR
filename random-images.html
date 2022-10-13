@@ -19,6 +19,9 @@
 		<div class="error-container text-center mt-0 mb-0 bg-danger" id="error-message-fetching">
 			<p class="mb-0"><i class="fa-solid fa-circle-info"></i> Unforuntly this service is out of service at the moment, please check back later</p>
 		</div>
+		<!-- END Error message Fetching -->
+
+		<!--SECTION - Header (Navigation)  -->
 		<div class="container mt-0">
 			<header class="d-flex justify-content-center py-3 mt-0">
 				<ul class="nav nav-pills">
@@ -28,27 +31,27 @@
 					<li class="nav-item">
 						<a href="random-images.html" class="nav-link active">Random Images</a>
 					</li>
-					<li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
 					<li class="nav-item"><a href="contact.html" class="nav-link">Contact Us</a></li>
-					<li class="nav-item"><a href="#" class="nav-link">About</a></li>
 				</ul>
 			</header>
 		</div>
+		<!--!SECTION -->
 
-		<!-- !NEW FORM 2v -->
+		<!--SECTION - Generation Form for CAT Images -->
 		<form class="row g-2 m-2">
-			<!-- ? Number of images -->
+			<!--NOTE - Field #1 - Number of image you want - expects a number above zero - empty field = 0 -->
+			<!-- Validation is set via JS file formValidation.js -->
 			<div class="col-md-2 form-floating">
 				<input id="no.Images floatingInputValue" type="text" class="form-control" placeholder="Leave a number here" />
 				<label for="no.Images">How many images do you want?</label>
 
-				<!--NOTE - Error message -->
+				<!--NOTE - Error message for Field #1-->
 				<div class="error-container">
 					<p id="noImageError" class="error-text"><i class="fa-solid fa-circle-info"></i> Must be above 0</p>
 				</div>
 			</div>
 
-			<!-- ? Size -->
+			<!--NOTE - Field #2 - Size of image when pressed OPTIONAL -->
 			<div class="col-md-3 form-floating">
 				<select id="size floatingSelect" class="form-select mb-2" area-label="Floating label select example">
 					<option value="d"></option>
@@ -58,23 +61,30 @@
 				</select>
 				<label for="floatingSelect">Select a size</label>
 
-				<!-- ? Enable GIF -->
+				<!--NOTE - Field #3 - If you want a GIF ON/OFF switch DEFAULT is OFF -->
 				<div class="col-md-3 form-check form-switch">
 					<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked enableGIF" />
 					<label class="form-check-label" for="flexSwitchCheckChecked">GIF?</label>
 				</div>
 			</div>
+
+			<!--SECTION SAY Text area  -->
 			<div class="col-md-7">
 				<div>
+					<!--NOTE - Field #4 - If you want a Text on image ON/OFF switch DEFAULT is OFF -->
 					<div class="form-check form-switch mb-2">
 						<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked textSay" />
 						<label class="form-check-label" for="flexSwitchCheckChecked">Do you want text on your image(s)?</label>
 					</div>
+
+					<!--NOTE - Field #5 ONLY if Field4 is ON  -->
+					<!--NOTE - Field #5 - What you want your cat to be saying - Text field expects something in there -->
+					<!-- Validation is set via JS file formValidation.js -->
 					<div class="form-floating">
 						<input id="sayTextValue" class="form-control" type="text" placeholder="Hi" disabled />
 						<label for="sayTextValue">What do you want your Cat to say?</label>
 
-						<!--NOTE - error message -->
+						<!--NOTE - Error message for Field #5 if there is no characters in field -->
 						<div class="error-container">
 							<p class="error-text" id="sayError">
 								<i class="fa-solid fa-circle-info"></i> The length of the text above needs to be longer then 0 characters please.
@@ -83,6 +93,7 @@
 					</div>
 					<div class="col-md-3">
 						<div class="form-floating mt-2">
+							<!--NOTE - Field #6 Colour for text - OPTIONAL - DEFAULT is White -->
 							<select id="color floatingSelect" class="form-select mb-2" area-label="Floating label select example" disabled>
 								<option value="White"></option>
 								<option value="aliceBlue">Alice Blue</option>
@@ -101,16 +112,18 @@
 								<option value="cadetblue">Cadet Blue</option>
 								<option value="chartreuse">Chartreuse</option>
 							</select>
-
 							<label for="floatingSelect">What Colour?</label>
 						</div>
 					</div>
 				</div>
 			</div>
+			<!--!SECTION  -->
 			<div class="col-12" id="messageArea">
-				<button class="btn btn-primary" type="button" id="submit">submit</button>
+				<!--NOTE - SUBMIT BUTTON  -->
+				<button class="btn btn-primary" type="button" id="submit">Submit</button>
 			</div>
 		</form>
+		<!--!SECTION -->
 
 		<!--s FORM CONTAINER -->
 		<!-- <form class="row g-2 m-2"> -->
