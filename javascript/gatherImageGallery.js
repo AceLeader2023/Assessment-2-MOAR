@@ -63,7 +63,7 @@ const creatingSortedData = {
 //! GET RANDOM NUMBERS
 const getRandom = {
 	numbers() {
-		var noImage = document.getElementById("no.Images floatingInputValue").value
+		var noImage = document.getElementById("noImages").value
 		if (enableGif.checked == true) {
 			for (let i = 0; i < noImage; i++) {
 				var randomNumbers = Math.floor(Math.random() * gifImages.length)

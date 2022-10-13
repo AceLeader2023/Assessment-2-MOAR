@@ -38,130 +38,94 @@
 		<!--!SECTION -->
 
 		<!--SECTION - Generation Form for CAT Images -->
-		<form class="row g-2 m-2">
-			<!--NOTE - Field #1 - Number of image you want - expects a number above zero - empty field = 0 -->
-			<!-- Validation is set via JS file formValidation.js -->
-			<div class="col-md-2 form-floating">
-				<input id="no.Images floatingInputValue" type="text" class="form-control" placeholder="Leave a number here" />
-				<label for="no.Images">How many images do you want?</label>
+		<div class="container">
+			<form class="row g-2">
+				<!--NOTE - Field #1 - Number of image you want - expects a number above zero - empty field = 0 -->
+				<!-- Validation is set via JS file formValidation.js -->
+				<div class="col-md-2 form-floating">
+					<input id="noImages" type="text" class="form-control" placeholder="Leave a number here" />
+					<label for="no.Images">How many images?</label>
 
-				<!--NOTE - Error message for Field #1-->
-				<div class="error-container">
-					<p id="noImageError" class="error-text"><i class="fa-solid fa-circle-info"></i> Must be above 0</p>
-				</div>
-			</div>
-
-			<!--NOTE - Field #2 - Size of image when pressed OPTIONAL -->
-			<div class="col-md-3 form-floating">
-				<select id="size floatingSelect" class="form-select mb-2" area-label="Floating label select example">
-					<option value="d"></option>
-					<option value="sm">Small</option>
-					<option value="md">Mediem</option>
-					<option value="or">Orginal</option>
-				</select>
-				<label for="floatingSelect">Select a size</label>
-
-				<!--NOTE - Field #3 - If you want a GIF ON/OFF switch DEFAULT is OFF -->
-				<div class="col-md-3 form-check form-switch">
-					<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked enableGIF" />
-					<label class="form-check-label" for="flexSwitchCheckChecked">GIF?</label>
-				</div>
-			</div>
-
-			<!--SECTION SAY Text area  -->
-			<div class="col-md-7">
-				<div>
-					<!--NOTE - Field #4 - If you want a Text on image ON/OFF switch DEFAULT is OFF -->
-					<div class="form-check form-switch mb-2">
-						<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked textSay" />
-						<label class="form-check-label" for="flexSwitchCheckChecked">Do you want text on your image(s)?</label>
+					<!--NOTE - Error message for Field #1-->
+					<div class="error-container">
+						<p id="noImageError" class="error-text"><i class="fa-solid fa-circle-info"></i> Must be above 0</p>
 					</div>
+				</div>
 
-					<!--NOTE - Field #5 ONLY if Field4 is ON  -->
-					<!--NOTE - Field #5 - What you want your cat to be saying - Text field expects something in there -->
-					<!-- Validation is set via JS file formValidation.js -->
-					<div class="form-floating">
-						<input id="sayTextValue" class="form-control" type="text" placeholder="Hi" disabled />
-						<label for="sayTextValue">What do you want your Cat to say?</label>
+				<!--NOTE - Field #2 - Size of image when pressed OPTIONAL -->
+				<div class="col-md-3 form-floating">
+					<select id="size" class="form-select mb-2" area-label="Floating label select example">
+						<option value="d"></option>
+						<option value="sm">Small</option>
+						<option value="md">Mediem</option>
+						<option value="or">Orginal</option>
+					</select>
+					<label for="floatingSelect">Select a size</label>
 
-						<!--NOTE - Error message for Field #5 if there is no characters in field -->
-						<div class="error-container">
-							<p class="error-text" id="sayError">
-								<i class="fa-solid fa-circle-info"></i> The length of the text above needs to be longer then 0 characters please.
-							</p>
+					<!--NOTE - Field #3 - If you want a GIF ON/OFF switch DEFAULT is OFF -->
+					<div class="col-md-3 form-check form-switch">
+						<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked enableGIF" />
+						<label class="form-check-label" for="flexSwitchCheckChecked">GIF?</label>
+					</div>
+				</div>
+
+				<!--SECTION SAY Text area  -->
+				<div class="col-md-7">
+					<div>
+						<!--NOTE - Field #4 - If you want a Text on image ON/OFF switch DEFAULT is OFF -->
+						<div class="form-check form-switch mb-2">
+							<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked textSay" />
+							<label class="form-check-label" for="flexSwitchCheckChecked">Do you want text on your image(s)?</label>
+						</div>
+
+						<!--NOTE - Field #5 ONLY if Field4 is ON  -->
+						<!--NOTE - Field #5 - What you want your cat to be saying - Text field expects something in there -->
+						<!-- Validation is set via JS file formValidation.js -->
+						<div class="form-floating">
+							<input id="sayTextValue" class="form-control" type="text" placeholder="Hi" disabled />
+							<label for="sayTextValue">What do you want your Cat to say?</label>
+
+							<!--NOTE - Error message for Field #5 if there is no characters in field -->
+							<div class="error-container">
+								<p class="error-text" id="sayError">
+									<i class="fa-solid fa-circle-info"></i> The length of the text above needs to be longer then 0 characters please.
+								</p>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-floating mt-2">
+								<!--NOTE - Field #6 Colour for text - OPTIONAL - DEFAULT is White -->
+								<select id="color" class="form-select mb-2" area-label="Floating label select example" disabled>
+									<option value="White"></option>
+									<option value="aliceBlue">Alice Blue</option>
+									<option value="AntiqueWhite">Antique White</option>
+									<option value="Aqua">Aqua</option>
+									<option value="Aquamarine">Aquamarine</option>
+									<option value="Azure">Azure</option>
+									<option value="Beige">Beige</option>
+									<option value="bisque">Bisque</option>
+									<option value="black">Black</option>
+									<option value="blanchedalmond">Blanched Almond</option>
+									<option value="blue">Blue</option>
+									<option value="blueviolet">Blue Violet</option>
+									<option value="Brown">Brown</option>
+									<option value="Burlywood">Burly Wood</option>
+									<option value="cadetblue">Cadet Blue</option>
+									<option value="chartreuse">Chartreuse</option>
+								</select>
+								<label for="floatingSelect">What Colour?</label>
+							</div>
 						</div>
 					</div>
-					<div class="col-md-3">
-						<div class="form-floating mt-2">
-							<!--NOTE - Field #6 Colour for text - OPTIONAL - DEFAULT is White -->
-							<select id="color floatingSelect" class="form-select mb-2" area-label="Floating label select example" disabled>
-								<option value="White"></option>
-								<option value="aliceBlue">Alice Blue</option>
-								<option value="AntiqueWhite">Antique White</option>
-								<option value="Aqua">Aqua</option>
-								<option value="Aquamarine">Aquamarine</option>
-								<option value="Azure">Azure</option>
-								<option value="Beige">Beige</option>
-								<option value="bisque">Bisque</option>
-								<option value="black">Black</option>
-								<option value="blanchedalmond">Blanched Almond</option>
-								<option value="blue">Blue</option>
-								<option value="blueviolet">Blue Violet</option>
-								<option value="Brown">Brown</option>
-								<option value="Burlywood">Burly Wood</option>
-								<option value="cadetblue">Cadet Blue</option>
-								<option value="chartreuse">Chartreuse</option>
-							</select>
-							<label for="floatingSelect">What Colour?</label>
-						</div>
-					</div>
 				</div>
-			</div>
-			<!--!SECTION  -->
-			<div class="col-12" id="messageArea">
-				<!--NOTE - SUBMIT BUTTON  -->
-				<button class="btn btn-primary" type="button" id="submit">Submit</button>
-			</div>
-		</form>
+				<!--!SECTION  -->
+				<div class="col-12" id="messageArea">
+					<!--NOTE - SUBMIT BUTTON  -->
+					<button class="btn btn-primary" type="button" id="submit">Submit</button>
+				</div>
+			</form>
+		</div>
 		<!--!SECTION -->
-
-		<!--s FORM CONTAINER -->
-		<!-- <form class="row g-2 m-2"> -->
-		<!-- ? Number of Images wanted -->
-		<!-- <div class="col-md-4">
-				<label for="Nimages">How many Images:</label>
-				<input
-					type="text"
-					id="numberofImages"
-					name="Nimages"
-					placeholder="0-500"
-					required
-					min="0"
-				/>
-				<div id="notification"></div>
-			</div>
-			<div class="col-md-2" id="tag-check">
-				<p>GIF?</p>
-				<input type="radio" id="yes" name="check-tag" value="yes" />
-				<label for="yes">Yes</label><br />
-				<input type="radio" id="no" name="check-tag" value="no" checked />
-				<label for="no">No</label>
-			</div>
-			<div class="col-md-5" id="tag-input">
-				<label for="tag-cats">What Size?</label>
-				<select id="sizes">
-					<option value="sm" id="small">Small</option>
-					<option value="md" id="medium">Medium</option>
-					<option value="or" id="orginal" selected>Orginal</option>
-				</select>
-				<div id="Tag-invalid"></div>
-			</div>
-			<div id="hide"><p id="tag-result">Use dropdown to select a tag</p></div>
-			<div class="col-12" id="messageArea">
-				<button class="btn btn-primary" type="button" id="submit">submit</button>
-			</div>
-		</form> -->
-		<!--f FORM CONTAINER  -->
 
 		<!--s IMAGES  -->
 		<div class="container">
@@ -173,6 +137,21 @@
 		<div class="row m-2 g-2" id="clearBTN">
 			<!-- <button class="btn btn-warning">CLEAR</button> -->
 		</div>
+
+		<!--SECTION - FOOTER  -->
+		<div class="container">
+			<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4">
+				<p class="col-md-4 mb-0 text-muted">© 2022 Cat Gallery</p>
+
+				<ul class="nav col-md-4 justify-content-end">
+					<li class="nav-item"><a href="index.html" class="nav-link px-2 text-muted">Home</a></li>
+					<li class="nav-item"><a href="random-images.html" class="nav-link px-2 text-muted">Random Images</a></li>
+					<li class="nav-item"><a href="contact.html" class="nav-link px-2 text-muted">Contact Us</a></li>
+				</ul>
+			</footer>
+		</div>
+
+		<!--!SECTION  -->
 		<!--f CLEAR BUTTON -->
 		<!--s SCRIPT -->
 		<!--! BS FIRST -->

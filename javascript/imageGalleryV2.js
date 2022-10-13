@@ -4,10 +4,10 @@ var submitButton = document.getElementById("submit") //? Submit button
 var cardArea = document.getElementById("row") //?Area for photos
 
 var enableGif = document.getElementById("flexSwitchCheckChecked enableGIF")
-var size = document.getElementById("size floatingSelect")
+var size = document.getElementById("size")
 var say = document.getElementById("flexSwitchCheckChecked textSay")
 var textSayAble = document.getElementById("sayTextValue")
-var sayColor = document.getElementById("color floatingSelect")
+var sayColor = document.getElementById("color")
 var noImageError = document.getElementById("noImageError")
 var selectNumbers = [] //? Defining a emtpy array
 var gifImages = []
