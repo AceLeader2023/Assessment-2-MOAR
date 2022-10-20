@@ -9,12 +9,13 @@ var displayImageAltText = [] // VAR displayImageAltText: is the images alterativ
 // !SECTION
 
 const display = {
+	//PURPOSE - This is to gather the information for displaying the images.
 	informationGet() {
-		// VAR displayImage
+		// VAR displayImage - is used for declaring what image style we are going to display and is an array
 		console.log("done 2")
 
 		if (GIFQueue.length > 0) {
-			displayImage = GIFQueue
+			displayImage = GIFQueue //NOTE - GIFQueue is all of the GIF images from the main Json and is assigning the same array to the displayImage array
 			for (let i = 0; i < displayImage.length; i++) {
 				displayImageID[i] = gifImages[randomNumberSet[i]].id
 				displayImageAltText[i] = gifImages[randomNumberSet[i]].tags
@@ -35,9 +36,13 @@ const display = {
 		this.informationDisplay()
 	},
 
+	//PURPOSE - To display the images to the user that requested those images
 	informationDisplay() {
+		//NOTE - displayImage - is to hold the link for the image
 		console.log(displayImage)
+		//NOTE - displayImageID - is to hold the image's ID for the id of the element
 		console.log(displayImageID)
+		//NOTE - displayImageAltText - is to hold the image's tags that are attached to the image
 		console.log(displayImageAltText)
 
 		for (let i = 0; i < displayImage.length; i++) {
