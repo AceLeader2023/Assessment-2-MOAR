@@ -10,6 +10,7 @@
 // !SECTION
 
 // SECTION Async Function Fetching Data
+//PURPOSE - getImages is to fetch the images from the API
 async function getImages() {
 	try {
 		// NOTE Setting all arrays to 0 length so there is no repeat
@@ -31,7 +32,9 @@ async function getImages() {
 // !SECTION
 
 // SECTION Sorting data array into two different arrays stillImages + gifImages
+//PURPOSE - creatingSortedData is there to sort out the GIFs and the still images that are fetch from the API
 const creatingSortedData = {
+	//PURPOSE - sort is here to sort the GIFs and still images apart using the tags that are also fetched at the time of getting the images
 	sort() {
 		// NOTE Setting yesStill to zero so data is always reset
 		var yesStill = 0
@@ -61,13 +64,18 @@ const creatingSortedData = {
 // !SECTION
 
 //! GET RANDOM NUMBERS
+//PURPOSE - To get ready for displaying the images, a random number generation is generating an array with random numbers
 const getRandom = {
+	//PURPOSE - Gets the numbers for either GIF images or still images depending if GIF is true
 	numbers() {
+		//NOTE - noImage is the number of images the user wants
 		var noImage = document.getElementById("noImages").value
 		if (enableGif.checked == true) {
 			for (let i = 0; i < noImage; i++) {
+				//NOTE - randomNumbers is a random number that gets pushed to randomNumbnerSet
 				var randomNumbers = Math.floor(Math.random() * gifImages.length)
 				console.log(randomNumbers)
+				//NOTE - randomNumberSet is a array of the random numbers that have been generated
 				randomNumberSet.push(randomNumbers)
 				console.log(randomNumberSet)
 			}
