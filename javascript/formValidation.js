@@ -3,7 +3,7 @@ var errorMessageAnime = document.getElementById("error-message-fetching")
 
 const formValidation = {
 	formValidator() {
-		var noImage = document.getElementById("no.Images floatingInputValue").value
+		var noImage = document.getElementById("noImages").value
 		noImage = Number(noImage)
 
 		//NOTE - Checking that number is above 0
